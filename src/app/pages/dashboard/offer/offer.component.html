@@ -1,0 +1,46 @@
+<h1>Offer List</h1>
+<div class="container">
+  <div *ngFor="let job of jobListings" class="job-card" (click)="openDrawer(job)">
+    <nz-card nzTitle="{{ job.entreprise }}">
+      <p><strong>Title:</strong> {{ job.titre }}</p>
+      <p><strong>Type:</strong> {{ job.type }}</p>
+      <p><strong>Salary:</strong> {{ job.salaire }}</p>
+      <p><strong>Description:</strong> {{ job.description }}</p>
+    </nz-card>
+  </div>
+</div>
+<nz-drawer [(nzVisible)]="drawerVisible" [nzTitle]="selectedJob?.entreprise" (nzOnClose)="closeDrawer()">
+  <div *nzDrawerContent>
+    <p><strong>Title:</strong> {{ selectedJob?.titre }}</p>
+    <p><strong>Type:</strong> {{ selectedJob?.type }}</p>
+    <p><strong>Salary:</strong> {{ selectedJob?.salaire }}</p>
+    <p><strong>Description:</strong> {{ selectedJob?.description }}</p>
+
+    <form nz-form (ngSubmit)="submitApplication()" nzLayout="vertical">
+      <nz-form-item>
+        <nz-form-label [nzFor]="'message'">Message:</nz-form-label>
+        <nz-form-control>
+          <textarea nz-input id="message" [(ngModel)]="message" name="message" required></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzFor]="'cv'">Upload CV:</nz-form-label>
+        <nz-form-control>
+          <div class="file-upload">
+            <label for="cv" class="file-upload-label">
+              <span class="plus-icon">+</span>
+            </label>
+            <input type="file" id="cv" (change)="onFileChange($event)" style="display: none;" required />
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control>
+          <button type="submit" nz-button nzType="primary">Submit this offer</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</nz-drawer>

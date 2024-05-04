@@ -1,0 +1,26 @@
+<h1>List Submits</h1>
+<nz-table #basicTable [nzScroll]="{ x: '1200px', y: '60vh' }" [nzData]="listSubmit" [nzBordered]="true" [nzSize]="'middle'">
+  <thead>
+  <tr>
+    <th>Offer Title</th>
+    <th>Enterprise</th>
+    <th>Type</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let offer of listSubmit">
+    <td>{{ offer.offer_title }}</td>
+    <td>{{ offer.enterprise }}</td>
+    <td>{{ offer.type }}</td>
+    <td>
+      <nz-alert nzType="success" nzMessage="Accepted"></nz-alert>
+      <nz-alert nzType="info" nzMessage="Waiting"></nz-alert>
+      <nz-alert nzType="error" nzMessage="Refused"></nz-alert>
+    </td>    <td>
+      <button nz-button nzType="primary" (click)="showConfirm()" nzDanger>delete</button>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

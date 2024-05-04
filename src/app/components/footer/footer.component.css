@@ -1,0 +1,30 @@
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: black;
+  color: white;
+}
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  background-color: black;
+}
+a{
+  color: #1890ff;
+  background-color: #001529;
+}
+nz-card {
+  background-color: transparent;
+  text-align: center}
+nz-card p {
+  color: white; /* White title color */
+}
+/* Social media link styling */
+.footer-section a {
+  margin-right: 10px;
+  color: white;
+}
+.socialIcon{
+  font-size: 30px;
+}

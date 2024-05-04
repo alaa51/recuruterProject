@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="container">
+  <div class="card">
+    <form nzLayout="vertical" nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label nzFor="email">Email</nz-form-label>
+        <nz-form-control nzErrorTip="Email is required!">
+          <nz-input-group nzPrefixIcon="user">
+            <input id="email" type="text" nz-input formControlName="userName" placeholder="Username" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="Password">Password</nz-form-label>
+        <nz-form-control nzErrorTip="Password is required">
+          <nz-input-group nzPrefixIcon="lock">
+            <input type="password" id="password" nz-input formControlName="password" placeholder="Password" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+      Or
+      <a routerLink="/role">register now!</a>
+    </form>
+  </div>
+</div>
+<app-footer></app-footer>

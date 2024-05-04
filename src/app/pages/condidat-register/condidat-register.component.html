@@ -1,0 +1,133 @@
+<app-header></app-header>
+<div class="container">
+  <h1 style="color: #1890ff">Register as condidat</h1>
+  <nz-steps [nzCurrent]="current">
+    <nz-step nzTitle="General information"></nz-step>
+    <nz-step nzTitle="Skill"></nz-step>
+    <nz-step nzTitle="Experience"></nz-step>
+  </nz-steps>
+  <div *ngIf="current === 0" class="steps-content">
+    <div class="card">
+      <form nzLayout="vertical" nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-label nzFor="firstName">First Name</nz-form-label>
+          <nz-form-control nzErrorTip="First Name is required">
+            <input id="firstName" type="text" nz-input formControlName="firstName" placeholder="First Name" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="lastName">Last Name</nz-form-label>
+          <nz-form-control nzErrorTip="Last Name is required">
+            <input id="lastName" type="text" nz-input formControlName="lastName" placeholder="Last Name" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="phoneNumber">Phone Number</nz-form-label>
+          <nz-form-control nzErrorTip="Phone Number is required">
+            <input id="phoneNumber" type="text" nz-input formControlName="phoneNumber" placeholder="Phone Number" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="email">Email</nz-form-label>
+          <nz-form-control nzErrorTip="Email is required">
+            <input id="email" type="email" nz-input formControlName="email" placeholder="Email" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="password">Password</nz-form-label>
+          <nz-form-control nzErrorTip="Password is required">
+            <input id="password" type="password" nz-input formControlName="password" placeholder="Password" />
+          </nz-form-control>
+        </nz-form-item>
+
+      </form>
+    </div>
+  </div>
+  <div class="steps-content" *ngIf="current === 1">
+    <div>
+      <nz-form-label>Modify your Skill</nz-form-label>
+      <input nz-input [(ngModel)]="inputContent" (keyup)="handleKeyUp($event)"/>
+      <ul>
+        <li *ngFor="let content of contentArray; index as i">
+          {{ content }}
+          <span (click)="removeItem(i)" style="color: red;cursor: pointer" nz-icon nzType="close-circle" nzTheme="outline"></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="steps-content" *ngIf="current === 2">
+    <form [formGroup]="form" style="display: flex;flex-direction: column; align-items: flex-start">
+      <div formArrayName="experiences">
+        <div *ngFor="let exp of experiences.controls; let i = index" [formGroupName]="i">
+          <nz-form-item>
+            <nz-form-label>Title</nz-form-label>
+            <nz-form-control>
+              <input nz-input formControlName="title" placeholder="Enter title" />
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label>Enterprise</nz-form-label>
+            <nz-form-control>
+              <input nz-input formControlName="enterprise" placeholder="Enter enterprise" />
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label>City</nz-form-label>
+            <nz-form-control>
+              <input nz-input formControlName="city" placeholder="Enter city" />
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label>Start Date</nz-form-label>
+            <nz-form-control>
+              <nz-date-picker formControlName="startDate" nzFormat="yyyy-MM-dd"></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label>End Date</nz-form-label>
+            <nz-form-control>
+              <nz-date-picker formControlName="endDate" nzFormat="yyyy-MM-dd"></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label>Description</nz-form-label>
+            <nz-form-control>
+              <textarea nz-input formControlName="description" placeholder="Enter description"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+          <button nz-button nzType="primary" (click)="removeExperience(i)">Remove Experience</button>
+
+          <hr />
+        </div>
+      </div>
+    </form>
+    <button  class="login-form-button login-form-margin" nz-button (click)="addExperience()">Add Experience</button>
+  </div>
+
+
+  <div class="steps-action">
+    <button nz-button nzType="default"  class="login-form-button login-form-margin"  (click)="pre()" *ngIf="current > 0">
+      <span>Previous</span>
+    </button>
+    <button nz-button nzType="primary"  class="login-form-button login-form-margin"  (click)="next()" *ngIf="current < 2">
+      <span>Next</span>
+    </button>
+    <button nz-button class="login-form-button login-form-margin"  (click)="done()" *ngIf="current === 2" [nzType]="'primary'">Register</button>
+    Or
+    <a routerLink="/login">Login</a>
+  </div>
+
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,39 @@
+<p><strong>id:</strong> {{ job.id }}</p>
+<p><strong>Title:</strong> {{ job.titre }}</p>
+<p><strong>Type:</strong> {{ job.type }}</p>
+<p><strong>Salary:</strong> {{ job.salaire }}</p>
+<p><strong>Description:</strong> {{ job.description }}</p>
+<h2>Candidate List</h2>
+<nz-table [nzBordered]="true"  [nzData]="listSbmits" [nzScroll]="{ x: '1200px', y: '40vh' }" #middleTable nzSize="middle">
+  <thead>
+  <tr>
+    <th >Name</th>
+    <th >Last Name</th>
+    <th >Email</th>
+    <th>Phone</th>
+    <th nzWidth="30%">Message</th>
+    <th>status</th>
+    <th>CV</th>
+    <th>action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let person of listSbmits">
+    <td>{{ person.name }}</td>
+    <td>{{ person.last_name }}</td>
+    <td>{{ person.email }}</td>
+    <td>{{ person.phone }}</td>
+    <td>{{ person.message }}</td>
+    <td>
+      <nz-alert nzType="success" nzMessage="Accepted"></nz-alert>
+      <nz-alert nzType="info" nzMessage="Waiting"></nz-alert>
+      <nz-alert nzType="error" nzMessage="Refused"></nz-alert>
+    </td>
+    <td><a [href]="person.cv_link" target="_blank">CV</a></td>
+    <td>
+      <button nz-button nzType="primary" style="margin-bottom: 3px;" (click)="showConfirm()" >Accept</button>
+      <button nz-button nzType="primary" (click)="showConfirm1()" nzDanger>Refuse</button>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

@@ -1,0 +1,28 @@
+<h1>List offer</h1>
+
+<nz-table [nzScroll]="{ x: '1200px', y: '60vh' }" #middleTable nzSize="middle" [nzData]="data">
+  <thead>
+  <tr>
+    <th nzWidth="30px">id</th>
+    <th>Name</th>
+    <th>titre</th>
+    <th>type</th>
+    <th>salaire</th>
+    <th>description</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of middleTable.data">
+    <td>{{ data.id }}</td>
+    <td>{{ data.entreprise }}</td>
+    <td>{{ data.titre }}</td>
+    <td>{{ data.type }}</td>
+    <td>{{ data.salaire }}</td>
+    <td>{{ data.description }}</td>
+    <td>
+      <button nz-button nzType="primary" (click)="showConfirm()" nzDanger>delete</button>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

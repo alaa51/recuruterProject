@@ -1,0 +1,54 @@
+h1{
+  color: #1890ff;
+  margin: 0 auto;
+}
+form {
+  max-width: 100%; /* Set maximum width */
+  margin: 0 auto; /* Center the form horizontally */
+  padding: 20px; /* Add padding around the form */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light gray background */
+}
+
+/* Form item styles */
+nz-form-item {
+  margin-bottom: 16px; /* Spacing between form items */
+}
+
+/* Label styles */
+nz-form-label {
+  font-weight: bold; /* Make labels bold */
+  margin-bottom: 4px; /* Space between label and input */
+}
+
+/* Form control styles */
+nz-form-control {
+  display: block; /* Make form controls block elements */
+}
+
+/* Input, select, and textarea styles */
+input, select, textarea {
+  width: 100%; /* Make inputs and selects full width */
+  padding: 8px; /* Padding inside inputs and selects */
+  border-radius: 4px; /* Rounded corners */
+  border: 1px solid #ccc; /* Light gray border */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle inset shadow */
+}
+
+/* Button styles */
+button {
+  width: 100%; /* Make button full width */
+  padding: 10px 15px; /* Add padding */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* White text color */
+  font-weight: bold; /* Bold text */
+  text-align: center; /* Center button text */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}

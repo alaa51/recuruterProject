@@ -1,0 +1,57 @@
+<h1>My Offer</h1>
+<div class="container">
+  <div *ngFor="let job of jobListings" class="job-card">
+    <nz-card nzTitle="{{ job.entreprise }}">
+      <p><strong>Title:</strong> {{ job.titre }}</p>
+      <p><strong>Type:</strong> {{ job.type }}</p>
+      <p><strong>Salary:</strong> {{ job.salaire }}</p>
+      <p><strong>Description:</strong> {{ job.description }}</p>
+      <p><strong>Submit:</strong> 3</p>
+      <div class="card-buttons">
+        <button nz-button nzType="primary" (click)="editJob(job)">Edit</button>
+        <button nz-button nzType="primary" nzDanger (click)="confirmDelete(job.id)" >Delete</button>
+        <button nz-button nzType="default" routerLink="/dashboard/details" >View</button>
+      </div>
+    </nz-card>
+  </div>
+</div>
+<nz-modal [(nzVisible)]="editModalVisible" nzTitle="Edit Job" (nzOnCancel)="cancelEdit()" (nzOnOk)="saveEdit()">
+  <ng-container *nzModalContent>
+    <form [formGroup]="editForm" nz-form nzLayout="vertical">
+      <nz-form-item>
+        <nz-form-label [nzFor]="'editEntreprise'">Company:</nz-form-label>
+        <nz-form-control>
+          <input nz-input id="editEntreprise" formControlName="entreprise" required />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzFor]="'editTitle'">Title:</nz-form-label>
+        <nz-form-control>
+          <input nz-input id="editTitle" formControlName="titre" required />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzFor]="'editType'">Type:</nz-form-label>
+        <nz-form-control>
+          <input nz-input id="editType" formControlName="type" required />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzFor]="'editSalaire'">Salary:</nz-form-label>
+        <nz-form-control>
+          <input nz-input id="editSalaire" formControlName="salaire" required />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzFor]="'editDescription'">Description:</nz-form-label>
+        <nz-form-control>
+          <textarea nz-input id="editDescription" formControlName="description" required></textarea>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>
