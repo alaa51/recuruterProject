@@ -34,3 +34,9 @@
     width: 100%;
   }
 }
+.ant-carousel .slick-slide img {
+   display: initial;
+}
+.ant-carousel  {
+height: 60vh
+}
